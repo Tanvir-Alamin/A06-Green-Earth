@@ -46,7 +46,7 @@
         </ul>
       </div>
       <div class="navbar-end">
-        <a class="btn btn-ghost rounded-full bg-[#FACC15] text-green-600 md:mr-20">Plant a Tree</a>
+        <a class="btn btn-ghost rounded-full bg-[#FACC15] text-green-800 md:mr-20">Plant a Tree</a>
       </div>
     </div>
   </nav>
@@ -57,7 +57,7 @@
       <h1 class="text-2xl md:text-4xl text-[#1F2937] font-bold w-max m-3">Plant a Tree, Grow a Future</h1>
       <p class="text-[#1F293780] text-[12px]">Join our mission to plant 1 million trees and make the Earth greener for
         future generations.</p>
-      <button class="btn w-max rounded-full bg-[#FACC15] text-green-600 my-5">Get Involved</button>
+      <button class="btn w-max rounded-full bg-[#FACC15] text-green-800 my-5">Get Involved</button>
     </div>
     <div><img class="w-0 md:w-full" src="./assets/hero-leaf2.png" alt=""></div>
   </section>
@@ -76,15 +76,16 @@
     </div>
   </section>
   <!-- Campaign Section -->
-  <section>
+  <section class="pb-25">
     <h1 class="text-2xl font-semibold text-center mt-24 mb-10">About the Campaign</h1>
-    <div class="flex justify-center items-center gap-8">
-      <div><img class="w-100" src="./assets/about.png" alt=""></div>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+      <div><img class="w-90 rounded-lg shadow-md" src="./assets/about.png" alt=""></div>
       <div>
-        <div class="text-[#1F2937] w-132 ">Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start,
+        <div class="text-[#1F293780] w-full md:w-132 ">Green Earth is a global tree plantation initiative dedicated to
+          fighting climate change. Since our start,
           we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats
           for wildlife, and combat global warming.</div>
-        <ul class="list-disc pl-10 text-[#1F2937]">
+        <ul class="list-disc pl-10 text-[#1F293780]">
           <li>Restoration of natural habitats</li>
           <li>Improvement of air quality</li>
           <li>Support for local communities</li>
@@ -94,9 +95,46 @@
     </div>
   </section>
 
+  <section class="bg-[#CFF0DC] py-15">
+    <h1 class="text-lg text-[#1F2937] font-semibold text-center mb-7">Our Impact</h1>
+    <div class="text-green-900 flex flex-col md:flex-row gap-5 items-center justify-around">
+      <div
+        class="bg-white py-5 w-60 rounded-xl text-center space-y-2 hover:scale-125 hover:bg-green-100 hover:shadow-lg">
+        <h1 class="font-semibold">500K+</h1>
+        <p class="text-[#1F293780]">Trees Planted</p>
+      </div>
+      <div
+        class="bg-white py-5 w-60 rounded-xl text-center space-y-2 hover:scale-125 hover:bg-green-100 hover:shadow-lg">
+        <h1 class="font-semibold">120+</h1>
+        <p class="text-[#1F293780]">Communities Involved</p>
+      </div>
+      <div
+        class="bg-white py-5 w-60 rounded-xl text-center space-y-2 hover:scale-125 hover:bg-green-100 hover:shadow-lg">
+        <h1 class="font-semibold">30+</h1>
+        <p class="text-[#1F293780]">Countries Reached</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#166534] flex flex-col items-center py-18">
+    <h1 class="text-2xl text-white font-semibold text-center mb-5">Plant a Tree Today</h1>
+    <fieldset class="fieldset bg-[#15803D] shadow-md rounded-box w-xs p-6">
 
 
+      <input type="text" class="input" placeholder="Your Name" />
 
+      <input type="email" class="input" placeholder="Your Email Address" />
+
+      <select class="select select-soft">
+        <option disabled selected>Number of Trees</option>
+        <option>1 Tree - $5</option>
+        <option>5 Trees - $25</option>
+        <option>10 Trees - $50</option>
+      </select>
+      <button class="btn btn-neutral mt-4 rounded-full bg-[#FACC15]">Donate Now</button>
+    </fieldset>
+  </section>
+<footer class="bg-[#14532D] text-white py-6 text-center">© 2025 Green Earth. All Rights Reserved.</footer>
   <script src="home.js"></script>
 </body>
 
