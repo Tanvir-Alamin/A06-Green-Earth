@@ -17,7 +17,7 @@ const descriptions = (details) => {
     desId.innerHTML = "";
    for(let detail of details){
      const makingCard = document.createElement("div");
-    makingCard.innerHTML=`<div class="p-4 bg-white rounded-xl h-full w-65 space-y-2">
+    makingCard.innerHTML=`<div class="p-4 bg-white rounded-xl h-full w-63 space-y-2">
           <img class="w-[311px] h-[186px] object-cover rounded-lg mx-auto " src="${detail.image}" alt="">
           <h1 class="font-semibold">${detail.name}</h1>
           <p class="text-[#1F293780] text-[12px]">${detail.description}</p>
@@ -43,4 +43,31 @@ const createCategories = (categories) => {
 
 }
 
+const showAll = ()=>{
+    const url = ("https://openapi.programming-hero.com/api/plants")
+       fetch(url)
+        .then(res => res.json())
+        .then(data => loadAll(data.plants))
+}
+const loadAll = (all)=>{
+    const desId = document.getElementById("plantSector");
+    desId.innerHTML = "";
+   for(let info of all){
+     const makingCard = document.createElement("div");
+    makingCard.innerHTML=`<div class="p-4 bg-white rounded-xl h-full w-63 space-y-2">
+          <img class="w-[311px] h-[186px] object-cover rounded-lg mx-auto " src="${info.image}" alt="">
+          <h1 class="font-semibold">${info.name}</h1>
+          <p class="text-[#1F293780] text-[12px]">${info.description}</p>
+          <div class="flex justify-between items-center">
+            <div class="text-[#15803D] bg-[#DCFCE7] font-semibold text-sm my-2 p-2 rounded-full">${info.category}</div>
+            <div class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${info.price}</div>
+          </div>
+          <button class="btn bg-[#15803D] text-white text-sm font-semibold rounded-full w-full hover:scale-105 shadow-sm">Add to Cart</button>
+        </div> `;
+    desId.appendChild(makingCard)
+   }
+
+}
+
+showAll();
 getCategories()
