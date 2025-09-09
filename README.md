@@ -6,6 +6,12 @@ Answer - map is used for looping through and array and tranform the element. for
 
 #### 3) What are arrow functions in ES6?
 
+Answer - arrow function in ES 6 is basically short form of normal function. it is often used to code easier and cleaner
+
 #### 4) How does destructuring assignment work in ES6?
 
+Answer - Destructuring assignment in ES6 is a way to unpack the array or object.
+
 #### 5) Explain template literals in ES6. How are they different from string concatenation?
+
+Answer - honestly I don't know much about it
