@@ -115,6 +115,9 @@ const loadAll = (all) => {
 
 }
 
+let cartTotal = 0;
+
+
 
 const addCart = (id) => {
     const url = (`https://openapi.programming-hero.com/api/plant/${id}`)
@@ -126,6 +129,7 @@ const addCart = (id) => {
 const addToCard = (cart) => {
     const cartName = document.getElementById("cart-container")
 
+
     const newCart = document.createElement("div");
     newCart.innerHTML = `<div id="add-Cart-${cart.id}" class="flex justify-around bg-green-50 rounded-lg ">
                 <div>
@@ -136,6 +140,9 @@ const addToCard = (cart) => {
             </div>`
 
     cartName.appendChild(newCart);
+
+    cartTotal += Number(cart.price);
+    document.getElementById("cart-total").innerText = cartTotal;
 }
 
 
@@ -143,8 +150,24 @@ const addToCard = (cart) => {
 const removeCart = (id) => {
     const getId = document.getElementById(`add-Cart-${id}`);
     getId.remove();
+
+
+
+    minusTheCart(id)
 }
 
+const minusTheCart = (id) => {
+    const url = (`https://openapi.programming-hero.com/api/plant/${id}`)
+    fetch(url)
+        .then(res => res.json())
+        .then(data => minus(data.plants))
+}
+
+
+const minus = (plants) => {
+    cartTotal -= Number(plants.price);
+    document.getElementById("cart-total").innerText = cartTotal;
+}
 
 
 const loadPlantDetail = async (id) => {
