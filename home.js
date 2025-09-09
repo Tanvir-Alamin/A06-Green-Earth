@@ -44,15 +44,15 @@ const descriptions = (details) => {
     for (let detail of details) {
         const makingCard = document.createElement("div");
         makingCard.innerHTML = `<div class="p-4 bg-white rounded-xl h-full w-63 space-y-2">
-          <img class="w-[311px] h-[186px] object-cover rounded-lg mx-auto " src="${detail.image}" alt="">
-          <h1 onclick="loadPlantDetail(${detail.id})" class="font-semibold hover:cursor-pointer">${detail.name}</h1>
-          <p class="text-[#1F293780] text-[12px]">${detail.description}</p>
-          <div class="flex justify-between items-center">
-            <div class="text-[#15803D] bg-[#DCFCE7] font-semibold text-sm my-2 p-2 rounded-full">${detail.category}</div>
-            <div class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${detail.price}</div>
-          </div>
-          <button class="btn bg-[#15803D] text-white text-sm font-semibold rounded-full w-full hover:scale-105 shadow-sm">Add to Cart</button>
-        </div> `;
+            <img class="w-[311px] h-[186px] object-cover rounded-lg mx-auto " src="${detail.image}" alt="">
+            <h1 onclick="loadPlantDetail(${detail.id})" class="font-semibold hover:cursor-pointer">${detail.name}</h1>
+            <p class="text-[#1F293780] text-[12px]">${detail.description}</p>
+            <div class="flex justify-between items-center">
+                <div class="text-[#15803D] bg-[#DCFCE7] font-semibold text-sm my-2 p-2 rounded-full">${detail.category}</div>
+                <div class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${detail.price}</div>
+            </div>
+            <button onclick="addCart(${detail.id})" class="btn bg-[#15803D] text-white text-sm font-semibold rounded-full w-full hover:scale-105 shadow-sm">Add to Cart</button>
+            </div> `;
         desId.appendChild(makingCard)
 
         spinnerManager(false)
@@ -98,15 +98,15 @@ const loadAll = (all) => {
     for (let info of all) {
         const makingCard = document.createElement("div");
         makingCard.innerHTML = `<div class="p-4 bg-white rounded-xl h-full w-63 space-y-2 shadow-md">
-          <img class="w-[311px] h-[186px] object-cover rounded-lg mx-auto " src="${info.image}" alt="">
-          <h1 onclick="loadPlantDetail(${info.id})" class="font-semibold hover:cursor-pointer">${info.name}</h1>
-          <p class="text-[#1F293780] text-[12px]">${info.description}</p>
-          <div class="flex justify-between items-center">
-            <div class="text-[#15803D] bg-[#DCFCE7] font-semibold text-sm my-2 p-2 rounded-full">${info.category}</div>
-            <div class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${info.price}</div>
-          </div>
-          <button class="btn bg-[#15803D] text-white text-sm font-semibold rounded-full w-full hover:scale-105 shadow-sm">Add to Cart</button>
-        </div> `
+            <img class="w-[311px] h-[186px] object-cover rounded-lg mx-auto " src="${info.image}" alt="">
+            <h1 onclick="loadPlantDetail(${info.id})" class="font-semibold hover:cursor-pointer">${info.name}</h1>
+            <p class="text-[#1F293780] text-[12px]">${info.description}</p>
+            <div class="flex justify-between items-center">
+                <div class="text-[#15803D] bg-[#DCFCE7] font-semibold text-sm my-2 p-2 rounded-full">${info.category}</div>
+                <div class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${info.price}</div>
+            </div>
+            <button onclick="addCart(${info.id})" class="btn bg-[#15803D] text-white text-sm font-semibold rounded-full w-full hover:scale-105 shadow-sm">Add to Cart</button>
+            </div> `
         desId.appendChild(makingCard)
 
         addtoallbtn()
@@ -114,6 +114,38 @@ const loadAll = (all) => {
     }
 
 }
+
+
+const addCart = (id) => {
+    const url = (`https://openapi.programming-hero.com/api/plant/${id}`)
+    fetch(url)
+        .then(res => res.json())
+        .then(data => addToCard(data.plants));
+}
+
+const addToCard = (cart) => {
+    const cartName = document.getElementById("cart-container")
+
+    const newCart = document.createElement("div");
+    newCart.innerHTML = `<div id="add-Cart-${cart.id}" class="flex justify-around bg-green-50 rounded-lg ">
+                <div>
+                <h1 class="font-semibold">${cart.name}</h1>
+                <p id="price">${cart.price}</p>
+                </div>
+                <div class= "hover:scale-115" onclick="removeCart(${cart.id})"><i class="fa-solid fa-xmark" style="color: #eb0000;"></i></div>
+            </div>`
+
+    cartName.appendChild(newCart);
+}
+
+
+
+const removeCart = (id) => {
+    const getId = document.getElementById(`add-Cart-${id}`);
+    getId.remove();
+}
+
+
 
 const loadPlantDetail = async (id) => {
     const url = (`https://openapi.programming-hero.com/api/plant/${id}`)
@@ -126,10 +158,10 @@ const displayModal = (word) => {
     console.log(word);
     const modelID = document.getElementById("modelHold");
     modelID.innerHTML = ` <h1 class="font-bold text-lg">${word.name}</h1>
-      <img class="w-[311px] h-[186px] object-cover rounded-lg mx-auto " src="${word.image}" alt="">
-      <p><span class="font-bold text-md">Category: </span>${word.category}</p>
-      <p><span class="font-bold text-md">Price:<i class="fa-solid fa-bangladeshi-taka-sign"></i></span>${word.price}</p>
-      <p><span class="font-bold text-sm">Description: </span>${word.description}</p>`
+        <img class="w-[311px] h-[186px] object-cover rounded-lg mx-auto " src="${word.image}" alt="">
+        <p><span class="font-bold text-md">Category: </span>${word.category}</p>
+        <p><span class="font-bold text-md">Price:<i class="fa-solid fa-bangladeshi-taka-sign"></i></span>${word.price}</p>
+        <p><span class="font-bold text-sm">Description: </span>${word.description}</p>`
     document.getElementById("my_modal_1").showModal();
 
 }

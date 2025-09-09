@@ -71,11 +71,11 @@
   <!-- Card Section -->
   <section class="bg-green-50">
     <h1 class="text-2xl font-semibold text-[#1F2937] text-center mt-15 mb-8">Choose Your Trees</h1>
-    <div class="flex justify-center mx-15 gap-10 h-max">
-      <div>
+    <div class="flex flex-col md:flex-row justify-center mx-15 gap-10 h-max">
+      <div class="flex flex-col items-center text-center justify-center md:block md:text-left md:justify-start md:items-start">
         <h1 class="text-lg font-bold mb-2">Categories</h1>
         <div id="showAll" onclick="showAll(); addtoallbtn()"
-          class="text-[#1F2937] hover:bg-[#15803D] hover:text-white rounded-lg p-1 hover:cursor-pointer">All Trees</div>
+          class="text-[#1F2937] hover:bg-[#15803D] hover:text-white w-max pr-5 rounded-lg p-1 hover:cursor-pointer">All Trees</div>
         <div id="Categorie" class="space-y-1 w-[120px]">
 
         </div>
@@ -84,22 +84,14 @@
         <span class="loading loading-dots loading-xl"></span>
       </section>
       <!-- all plants here -->
-      <div class="grid grid-cols-3 gap-5 max-w-[1000px] mx-auto" id="plantSector">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-[1000px] mx-auto" id="plantSector">
 
       </div>
-      <div class="w-[150px] bg-white rounded-lg">
-        <h1 class="text-lg font-bold p-2">Your Cart</h1>
+      <div class="bg-white rounded-lg flex justify-center"><div class="w-[150px] ">
+        <h1 class="text-lg text-center font-bold p-2">Your Cart</h1>
         <h1 id="cart-container">
-          <div class="flex justify-around bg-green-50 rounded-lg ">
-            <div>
-              <h1 class="font-semibold">Tree Name</h1>
-              <p>Price</p>
-            </div>
-            <div><i class="fa-solid fa-xmark" style="color: #eb0000;"></i></div>
-          </div>
-
         </h1>
-      </div>
+      </div></div>
     </div>
   </section>
   <!-- Campaign Section -->
@@ -108,7 +100,7 @@
     <div class="flex flex-col md:flex-row justify-center items-center gap-8">
       <div><img class="w-90 rounded-lg shadow-md" src="./assets/about.png" alt=""></div>
       <div>
-        <div class="text-[#1F293780] w-full md:w-132 ">Green Earth is a global tree plantation initiative dedicated to
+        <div class="text-[#1F293780] text-wrap md:w-132 ">Green Earth is a global tree plantation initiative dedicated to
           fighting climate change. Since our start,
           we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats
           for wildlife, and combat global warming.</div>
